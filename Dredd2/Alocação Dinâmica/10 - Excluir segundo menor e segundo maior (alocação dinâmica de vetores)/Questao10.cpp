@@ -26,6 +26,48 @@ using namespace std;
 
 int main()
 {
+  int n;
+  cin >> n;
+
+  float *vet = new float[n];
+
+  for (int i = 0; i < n; i++)
+  {
+    cin >> vet[i];
+  }
+
+  int segundoMenor = 0;
+  int segundoMaior = 0;
+  for (int i = 0; i < n; i++)
+  {
+    int contMaior = 0;
+    for (int j = 0; j < n; j++)
+    {
+      if (vet[i] > vet[j])
+      {
+        cout << "vetI " << vet[i] << " vetJ " << vet[j] << endl;
+        contMaior++;
+      }
+    }
+    if (contMaior == 1)
+      segundoMenor = i;
+    if (contMaior == (n - 1))
+      segundoMaior = i;
+  }
+
+  cout << segundoMenor << " e " << segundoMaior;
+
+  float *vetSaida = new float[n];
+
+  copy(vet, vet + n, vetSaida);
+
+  delete[] vet;
+
+  for (int i = 0; i < n; i++)
+  {
+    if (i != segundoMenor and i != segundoMaior)
+      cout << vetSaida[i] << endl;
+  }
 
   return 0;
 }
