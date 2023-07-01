@@ -36,38 +36,37 @@ int main()
     cin >> vet[i];
   }
 
-  int segundoMenor = 0;
-  int segundoMaior = 0;
+  int segundoMaior;
+  int segundoMenor;
   for (int i = 0; i < n; i++)
   {
     int contMaior = 0;
+    int contMenor = 0;
     for (int j = 0; j < n; j++)
     {
       if (vet[i] > vet[j])
-      {
-        cout << "vetI " << vet[i] << " vetJ " << vet[j] << endl;
         contMaior++;
-      }
+      if (vet[i] < vet[j])
+        contMenor++;
     }
-    if (contMaior == 1)
-      segundoMenor = i;
-    if (contMaior == (n - 1))
+    if (contMaior == (n - 2))
       segundoMaior = i;
+    if (contMenor == (n - 2))
+      segundoMenor = i;
   }
 
-  cout << segundoMenor << " e " << segundoMaior;
-
   float *vetSaida = new float[n];
-
   copy(vet, vet + n, vetSaida);
-
-  delete[] vet;
+  copy(vet, vet + (n - 2), vet);
 
   for (int i = 0; i < n; i++)
   {
-    if (i != segundoMenor and i != segundoMaior)
+    if (i != segundoMaior and i != segundoMenor)
       cout << vetSaida[i] << endl;
   }
+
+  delete[] vet;
+  delete[] vetSaida;
 
   return 0;
 }
