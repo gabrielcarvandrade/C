@@ -72,6 +72,7 @@ struct Familia
 
 void alocacaoFamilia(int i, int &tamanho, Familia *&familia, int *&tamanhos, int &contTamanhos)
 {
+
   if (i == tamanho)
   {
     int novoTamanho = tamanho + 3;
@@ -108,24 +109,21 @@ int main()
   bool fim = false;
   while (!fim)
   {
-    alocacaoFamilia(i, tamanho, familia, tamanhos, contTamanhos);
+    string tentativaFim;
+    cin >> tentativaFim;
 
-    cin >> familia[i].nome;
-    if (familia[i].nome == "FIM" and i == tamanho - 3)
+    if (tentativaFim != "FIM")
     {
-      contTamanhos--;
-      fim = true;
-    }
-    else if (familia[i].nome == "FIM")
-    {
-      fim = true;
-    }
-    else
-    {
+      alocacaoFamilia(i, tamanho, familia, tamanhos, contTamanhos);
+      familia[i].nome = tentativaFim;
       cin >> familia[i].idadePai;
       cin >> familia[i].idadeMae;
       cin >> familia[i].idadeFilho;
       i++;
+    }
+    else
+    {
+      fim = true;
     }
   }
 

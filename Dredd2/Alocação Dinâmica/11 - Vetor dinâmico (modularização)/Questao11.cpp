@@ -1,4 +1,5 @@
-/*Faça um programa que guarda números num vetor dinâmico. Não se sabe quantos números deverão ser armazenados até que se saiba quais são os números.
+/*
+Faça um programa que guarda números num vetor dinâmico. Não se sabe quantos números deverão ser armazenados até que se saiba quais são os números.
 
 A estratégia de alocação de memória deve ser a seguinte:
 
@@ -58,27 +59,21 @@ int main()
   {
     vet[i] = numero;
 
-    i++;
-
     verificacaoTamanho(i, tamanho, vet, transformacoes);
+
+    i++;
 
     cin >> numero;
   }
 
-  int *vetNovo = new int[tamanho];
-  delete[] vetNovo;
-
-  vetNovo = vet;
-
   for (int j = 0; j < i; j++)
-    cout << vetNovo[j] << " ";
+  {
+    cout << vet[j] << " ";
+  }
 
-  cout << endl;
-
-  cout << tamanho << endl;
-  cout << transformacoes << endl;
-
-  delete[] vet;
+  cout << endl
+       << tamanho << endl
+       << transformacoes << endl;
 
   return 0;
 }
